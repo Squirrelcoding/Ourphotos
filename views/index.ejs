@@ -1,0 +1,24 @@
+<a href=<%=imagePath%> download>
+  <img src=<%=imagePath%>>
+</a>
+<br>
+<%=imageTitle%><br>
+<%=imageDes%><br>
+<form method="POST" action="/seeImage">
+	<input name="imageName" type="text" placeholder="Image Name"/>
+	<input type="submit" value="Submit">
+</form>
+
+<hr><br>
+
+<p>Upload a file</p>
+<form action="/uploadFile" method="POST" enctype='multipart/form-data'>
+	<input type="file" id="myFile" name="fileName" accept="image/png">
+	<input type="text" name="ImageName" placeholder="Title of Image (Optional)">
+	<textarea name="description" placeholder="Description (Optional)" rows="10" cols="25"></textarea>
+	<input type="submit">
+</form>
+
+<hr><br>
+
+<%=message%>
