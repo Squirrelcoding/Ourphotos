@@ -22,59 +22,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-white">Upload File</a>
-		<a href="/reportImage" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Report An Image</a>
-		<a href="/reportImage" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Why Join?</a>
+    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Upload File</a>
+		<a href="/reportImage" class="w3-bar-item w3-button w3-padding-large w3-white">Report An Image</a>
+		<a href="/join" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Why Join?</a>
   </div>
-	</div>
-	<br><br>
-	<h2 class="center">Upload Image</h2>
+	<h2 class="center">Report An Image</h2>
 
-<form action="/uploadFile" method="POST" enctype='multipart/form-data' class="center">
+<form method="POST" action="/report" class="center">
 
     <div class="form-group">
-			<input type="file" id="myFile" name="fileName" accept="image/png"><br>
-			<input type="text" name="ImageName" placeholder="Title of Image (Optional)"><br>
-			<textarea name="description" placeholder="Description (Optional)" rows="10" cols="25"></textarea><br>
+			<input type="text" name="imageLink" placeholder="Image Link">
+			<textarea name="description" placeholder="Description of Image" rows="10" cols="25"></textarea>	        
     </div>
     <div class="form-group">
         <button class="button success">Submit data</button>				
         <input type="button" class="button" value="Cancel">
     </div>
 </form>
-	<p class="Font2 center"><%=message%></p>
-	<br>
+<p class="Font2 center"><%=message%></p>
 </body>
 </html>
-
-<!-- Selected: w3-bar-item w3-button w3-padding-large w3-white -->
-<!-- Unselected: w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-<p>Upload a file</p>
-<form action="/uploadFile" method="POST" enctype='multipart/form-data'>
-	<input type="file" id="myFile" name="fileName" accept="image/png">
-	<input type="text" name="ImageName" placeholder="Title of Image (Optional)">
-	<textarea name="description" placeholder="Description (Optional)" rows="10" cols="25"></textarea>
-	<input type="submit">
-</form>
-
-<hr><br>
-
-
-
--->

@@ -31,6 +31,9 @@ app.use(fileUpload({
 app.get('/', function(req, res) {
 	res.render('index', {message:"", imagePath:"images/pixel.png", imageTitle:"", imageDes: ""})
 })
+app.get('/reportImage', function(req, res) {
+	res.render('report', {message:""})
+})
 const storage = new Storage({
   keyFilename: './key.json',
 });
@@ -38,8 +41,17 @@ var port = process.env.PORT || 3000;
 app.listen(port, () => 
   console.log(`App is listening on port ${port}.`)
 );
-app.post('/seeImage', async (req, res) => {
-	var imageName = req.body.imageName
+app.post('/report', async (req, res) => {
+	var randomString = functions.randomString(6)
+	var report = {
+		url: req.body.imageLink,
+		des: req.body.description
+	}
+	db.collection('pngShare').doc('Reports').collection('report').doc(randomString).set(report)
+	res.render('report', {message:"Report Submitted Successfully."})
+})
+app.get('/image', function(req, res) {
+	var imageName = req.query.imageID
 	let bucketName = 'gs://poopnet-4fb22.appspot.com'
 	var filename = imageName;
 	var downloadFile = async() => {
@@ -47,15 +59,20 @@ app.post('/seeImage', async (req, res) => {
 		var options = {
 			destination: destFilename
 		};
+		var ref = db.collection('pngShare').doc(imageName);
+		const doc = await ref.get();
+		if (!doc.exists) {
+			res.render('seeImage', {message:"Sorry, looks like that image does not exist!", imagePath:"images/pixel.png", imageTitle:"", imageDes: ""});
+		}
+		else {
 		await storage.bucket(bucketName).file('ImageShare' + '/' + filename + ".png").download(options);
-		var ref = db.collection('pngShare').doc(filename);
-		var doc = await ref.get();
 		var postContents = {
 			title: doc.data().title,
 			description: doc.data().description
 		}
+		res.render('seeImage', {message:"", imagePath:"images/image.png", imageTitle:"Image Title/Name:" + postContents.title, imageDes: "Description of Image: " + postContents.description});
+		}
 
-		res.render('index', {message:"", imagePath:"images/image.png", imageTitle:"Image Title/Name:" + postContents.title, imageDes: "Description of Image: " + postContents.description});
 	} 
 	downloadFile();
 })
