@@ -18,3 +18,4 @@ Here at Softsquirrel Studios, we believe that code should be open source, so tha
 - Downloading Feature is a bit buggy but who cares.
 - Report issues at our [bug report/feedback page](https://reviews.softsquirrel.tk/)
 
+Check out the website at https://ourphotos.softsquirrel.tk/
