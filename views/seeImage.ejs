@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>DebitStore | Edit</title>
+<title>Ourphotos</title>
 <meta charset="UTF-8">
-<link rel="icon" href="icon.png">
+<head><link rel="icon" href="icon.png"></head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -39,8 +39,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <p><%=imageTitle%></p><br>
 <p><%=imageDes%></p><br>
 <p class="Font2"><%=message%></p>
-<script src="refresh.js"></script>
-
+<script>
+if (sessionStorage.imagess) {}
+else {
+  console.log('hi')
+	sessionStorage.imagess = "<%=imagePath%>"
+}
+function Download() {
+  window.location.reload();
+	console.log('page refreshed.')
+	document.getElementById('downloadImage').src = sessionStorage.imagess;
+}
+</script>
 </div>
 
 </body>

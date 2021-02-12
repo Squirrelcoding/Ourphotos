@@ -1,4 +1,3 @@
-//hi
 const {Storage} = require('@google-cloud/storage');
 const express = require("express");
 const app = new express();
@@ -31,6 +30,9 @@ app.use(fileUpload({
 app.get('/', function(req, res) {
 	res.render('index', {message:"", imagePath:"images/pixel.png", imageTitle:"", imageDes: ""})
 })
+app.get('/join', function(req, res) {
+	res.render('joinpage', {message:""})
+})
 app.get('/reportImage', function(req, res) {
 	res.render('report', {message:""})
 })
@@ -55,14 +57,14 @@ app.get('/image', function(req, res) {
 	let bucketName = 'gs://poopnet-4fb22.appspot.com'
 	var filename = imageName;
 	var downloadFile = async() => {
-		let destFilename = './views/images/image.png';
+		let destFilename = './views/daImages/image.png';
 		var options = {
 			destination: destFilename
 		};
 		var ref = db.collection('pngShare').doc(imageName);
 		const doc = await ref.get();
 		if (!doc.exists) {
-			res.render('seeImage', {message:"Sorry, looks like that image does not exist!", imagePath:"images/pixel.png", imageTitle:"", imageDes: ""});
+			res.render('seeImage', {message:"Sorry, looks like that image does not exist!", imagePath:"daImages/pixel.png", imageTitle:"", imageDes: ""});
 		}
 		else {
 		await storage.bucket(bucketName).file('ImageShare' + '/' + filename + ".png").download(options);
@@ -70,7 +72,7 @@ app.get('/image', function(req, res) {
 			title: doc.data().title,
 			description: doc.data().description
 		}
-		res.render('seeImage', {message:"", imagePath:"images/image.png", imageTitle:"Image Title/Name:" + postContents.title, imageDes: "Description of Image: " + postContents.description});
+		res.render('seeImage', {message:"", imagePath:"daImages/image.png", imageTitle:"Image Title/Name:" + postContents.title, imageDes: "Description of Image: " + postContents.description});
 		}
 
 	} 

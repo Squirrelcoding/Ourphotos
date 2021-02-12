@@ -2,10 +2,11 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function refresh() {
-	window.location.reload();
+async function refresh() {
+	await window.location.reload();
+	console.log("Page has refreshed.")
 }
 async function Download() {
-  window.location.reload();
+  await refresh();
 	document.getElementById('downloadImage').src = 'images/image.png';
 };
