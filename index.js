@@ -111,8 +111,9 @@ app.post('/uploadFile', async (req, res) => {
                 imageDes: ""
             })
         } else {
-            var randStringName = functions.randomString(10)
+            var randStringName = functions.randomString(10);
             var randString = randStringName + ".png";
+            var link = "http://localhost:8080/image?imageID=" + randStringName;
             console.log(randString)
             var avatar = req.files.fileName;
             var postContents = {
@@ -128,7 +129,7 @@ app.post('/uploadFile', async (req, res) => {
                 }
                 await db.collection("pngShare").doc(randStringName).set(postContents);
                 res.render('index', {
-                    message: "File uploaded successfuly! Enter the code " + randStringName + " Into the access code form to see or share your image! Please refresh the page before uploading another image.",
+                    message: "Image uploaded successfully. Use the link " + link + " to share your photo with others!",
                     imagePath: "daImages/pixel.png",
                     imageTitle: "",
                     imageDes: ""
@@ -142,7 +143,7 @@ app.post('/uploadFile', async (req, res) => {
                 }
                 await db.collection("pngShare").doc(randStringName).set(postContents);
                 res.render('index', {
-                    message: "File uploaded successfuly! Enter the code " + randStringName + " Into the access code form to see or share your image! Please refresh the page before uploading another image.",
+                    message: "Image uploaded successfully. Use the link " + link + " to share your photo with others!",
                     imagePath: "daImages/pixel.png",
                     imageTitle: "",
                     imageDes: ""
@@ -156,7 +157,7 @@ app.post('/uploadFile', async (req, res) => {
                 }
                 await db.collection("pngShare").doc(randStringName).set(postContents);
                 res.render('index', {
-                    message: "File uploaded successfuly! Enter the code " + randStringName + " Into the access code form to see or share your image! Please refresh the page before uploading another image.",
+                    message: "Image uploaded successfully. Use the link " + link + " to share your photo with others!",
                     imagePath: "daImages/pixel.png",
                     imageTitle: "",
                     imageDes: ""
@@ -165,7 +166,7 @@ app.post('/uploadFile', async (req, res) => {
             if (postContents.title != "" && postContents.description != "") {
                 await db.collection("pngShare").doc(randStringName).set(postContents);
                 res.render('index', {
-                    message: "File uploaded successfuly! Enter the code " + randStringName + " Into the access code form to see or share your image! Please refresh the page before uploading another image.",
+                    message: "Image uploaded successfully. Use the link " + link + " to share your photo with others!",
                     imagePath: "daImages/pixel.png",
                     imageTitle: "",
                     imageDes: ""
