@@ -3,7 +3,7 @@ Ourphotos is an image sharing website similar to imgBB, where you upload a photo
 # Ourphotos VS Other websites
 
 | Qualities  | Ourphotos |      imgur      |  imgbb |
-|--|----------|:-------------:|------:|
+|--|:----------:|:-------------:|------:|
 | Title/Description  | :white_check_mark: |  :white_check_mark: | :x: |
 | Downloading feature | :white_check_mark: |   :white_check_mark:   | :white_check_mark: |
 | Starts with "O" | :white_check_mark: |:x: | :x: |
