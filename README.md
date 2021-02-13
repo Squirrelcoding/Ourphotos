@@ -20,3 +20,10 @@ Here at Softsquirrel Studios, we believe that code should be open source, so tha
 - Report issues at our [bug report/feedback page](https://reviews.softsquirrel.tk/)
 
 Check out the website at https://ourphotos.softsquirrel.tk/
+
+# How to use
+Ourphotos uses Firebase to store the files and other data. To try it out, [go to the website](https://ourphotos.softsquirrel.tk/), or do the following steps:
+
+1. Create a Firebase account and get the key
+2. Replace `key.json` with your database key.
+3. Change the lines `14`, `15`, and `70` with your database URL and bucket name.
