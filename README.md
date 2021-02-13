@@ -27,3 +27,10 @@ Ourphotos uses Firebase to store the files and other data. To try it out, [go to
 1. Create a Firebase account and get the key
 2. Replace `key.json` with your database key.
 3. Change the lines `14`, `15`, and `70` with your database URL and bucket name.
+
+# Vulnerabilities
+If you have noticed a vulnerability, it would be recommended to report it to `issues`, or our [review/bugs page](https://reviews.softsquirrel.tk)
+
+| Vulnerability  | Status | 
+|--|:----------:|
+| Firebase key exposed in history | Fixed - Disabled Service Account| 
